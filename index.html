@@ -11,7 +11,6 @@
         body { font-family: 'Inter', sans-serif; }
         .loader { border: 4px solid #f3f3f3; border-top: 4px solid #3498db; border-radius: 50%; width: 24px; height: 24px; animation: spin 1s linear infinite; }
         @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-        /* CSS lainnya tidak berubah */
         input[type=range]::-webkit-slider-runnable-track { background: #4a5568; }
         input[type=range]::-moz-range-track { background: #4a5568; }
         input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; background: #2dd4bf; cursor: pointer; height: 1.25rem; width: 1.25rem; border-radius: 50%; margin-top: -6px; }
@@ -21,41 +20,74 @@
 <body class="bg-gray-900 text-white flex items-center justify-center min-h-screen p-4">
 
     <div class="w-full max-w-2xl bg-gray-800 rounded-2xl shadow-2xl p-6 md:p-8 space-y-6 border border-gray-700">
-        <!-- Konten HTML (tidak berubah) -->
+        <!-- Header -->
         <div class="text-center">
             <h1 class="text-3xl font-bold text-white">Converter Text To Suara By @donitata1717</h1>
             <p class="text-gray-400 mt-2">Ubah tulisan menjadi audio dengan kustomisasi lengkap.</p>
         </div>
+
+        <!-- Text Input -->
         <div>
             <label for="text-input" class="block mb-2 text-sm font-medium text-gray-300">Masukkan Teks Anda:</label>
             <textarea id="text-input" rows="5" class="w-full bg-gray-700 border border-gray-600 text-white text-sm rounded-lg focus:ring-cyan-500 focus:border-cyan-500 p-4 placeholder-gray-400 transition duration-200" placeholder="Contoh: Halo, selamat pagi. Waktu sekarang adalah pukul sembilan lewat tiga puluh menit."></textarea>
         </div>
+
+        <!-- Settings -->
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 pt-2">
+              <!-- Voice Selection -->
               <div>
                   <label for="voice-select" class="block mb-2 text-sm font-medium text-gray-300">Jenis Suara</label>
                   <select id="voice-select" class="w-full bg-gray-700 border border-gray-600 text-white text-sm rounded-lg focus:ring-cyan-500 focus:border-cyan-500 p-2.5">
-                      <option value="Kore">Wanita (Tegas)</option> <option value="Puck">Wanita (Ceria)</option> <option value="Leda">Wanita (Muda)</option> <option value="Callirrhoe">Wanita (Santai)</option> <option value="Charon">Pria (Informatif)</option> <option value="Fenrir">Pria (Bersemangat)</option> <option value="Orus">Pria (Tegas)</option> <option value="Iapetus">Pria (Jelas)</option>
+                      <option value="Kore">Wanita (Tegas)</option>
+                      <option value="Puck">Wanita (Ceria)</option>
+                      <option value="Leda">Wanita (Muda)</option>
+                      <option value="Callirrhoe">Wanita (Santai)</option>
+                      <option value="Charon">Pria (Informatif)</option>
+                      <option value="Fenrir">Pria (Bersemangat)</option>
+                      <option value="Orus">Pria (Tegas)</option>
+                      <option value="Iapetus">Pria (Jelas)</option>
                   </select>
               </div>
+              <!-- Accent Selection -->
               <div>
                   <label for="accent-select" class="block mb-2 text-sm font-medium text-gray-300">Logat / Aksen</label>
                   <select id="accent-select" class="w-full bg-gray-700 border border-gray-600 text-white text-sm rounded-lg focus:ring-cyan-500 focus:border-cyan-500 p-2.5">
-                      <option value="standar">Standar (Default)</option> <option value="Jawa">Jawa</option> <option value="Sunda">Sunda</option> <option value="Minang">Minang</option> <option value="Jaksel">Jaksel</option> <option value="Makassar">Makassar</option> <option value="Madura">Madura</option>
+                      <option value="standar">Standar (Default)</option>
+                      <option value="Jawa">Jawa</option>
+                      <option value="Sunda">Sunda</option>
+                      <option value="Minang">Minang</option>
+                      <option value="Jaksel">Jaksel</option>
+                      <option value="Makassar">Makassar</option>
+                      <option value="Madura">Madura</option>
                   </select>
               </div>
+              <!-- Style Selection -->
               <div>
                   <label for="style-select" class="block mb-2 text-sm font-medium text-gray-300">Gaya Bicara</label>
                   <select id="style-select" class="w-full bg-gray-700 border border-gray-600 text-white text-sm rounded-lg focus:ring-cyan-500 focus:border-cyan-500 p-2.5">
-                      <option value="normal">Normal</option> <option value="dengan ramah">Ramah</option> <option value="dengan bersemangat">Bersemangat</option> <option value="dengan nada sedih">Sedih</option> <option value="sambil berbisik">Berbisik</option> <option value="dengan tegas">Tegas</option>
+                      <option value="normal">Normal</option>
+                      <option value="dengan ramah">Ramah</option>
+                      <option value="dengan bersemangat">Bersemangat</option>
+                      <option value="dengan nada sedih">Sedih</option>
+                      <option value="sambil berbisik">Berbisik</option>
+                      <option value="dengan tegas">Tegas</option>
                   </select>
               </div>
+               <!-- Age Selection -->
                <div>
                   <label for="age-select" class="block mb-2 text-sm font-medium text-gray-300">Perkiraan Usia</label>
                   <select id="age-select" class="w-full bg-gray-700 border border-gray-600 text-white text-sm rounded-lg focus:ring-cyan-500 focus:border-cyan-500 p-2.5">
-                      <option value="default">Default (Tidak Ditentukan)</option> <option value="10">Anak (10 tahun)</option> <option value="19">Remaja (19 tahun)</option> <option value="25">Dewasa Muda (25 tahun)</option> <option value="30">Dewasa (30 tahun)</option> <option value="50">Paruh Baya (50 tahun)</option> <option value="60">Lansia (60 tahun)</option>
+                      <option value="default">Default (Tidak Ditentukan)</option>
+                      <option value="10">Anak (10 tahun)</option>
+                      <option value="19">Remaja (19 tahun)</option>
+                      <option value="25">Dewasa Muda (25 tahun)</option>
+                      <option value="30">Dewasa (30 tahun)</option>
+                      <option value="50">Paruh Baya (50 tahun)</option>
+                      <option value="60">Lansia (60 tahun)</option>
                   </select>
               </div>
-              <div class="md-col-span-2">
+              <!-- Speed Control -->
+              <div class="md:col-span-2">
                   <div class="flex justify-between items-center mb-2">
                        <label class="text-sm font-medium text-gray-300">Kecepatan Bicara:</label>
                        <div class="flex items-center gap-2">
@@ -67,12 +99,14 @@
                   <input id="speed-slider" type="range" min="0.5" max="2.0" value="1.0" step="0.1" class="w-full h-2 bg-gray-700 rounded-lg appearance-none cursor-pointer">
               </div>
         </div>
+        <!-- Preview Control -->
         <div class="pt-2">
              <button id="preview-btn" class="w-full flex items-center justify-center gap-2 bg-cyan-600 hover:bg-cyan-700 disabled:bg-cyan-800 disabled:cursor-not-allowed text-white font-bold py-3 px-4 rounded-lg transition duration-200">
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
                 <span>Pratinjau Suara</span>
             </button>
         </div>
+        <!-- Download Controls -->
         <div id="download-container" class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
             <button id="download-wav-btn" disabled class="w-full flex items-center justify-center gap-2 bg-gray-600 hover:bg-gray-500 disabled:bg-gray-700 disabled:cursor-not-allowed text-white font-bold py-3 px-4 rounded-lg transition duration-200">
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
@@ -83,6 +117,7 @@
                 <span>Unduh .mp3</span>
             </button>
         </div>
+        <!-- Status and Player -->
         <div id="status-container" class="text-center h-6">
             <p id="status-text" class="text-sm text-gray-400 transition-opacity duration-300">Silakan masukkan teks dan klik pratinjau.</p>
             <div id="loader" class="loader mx-auto hidden"></div>
@@ -91,7 +126,7 @@
     </div>
 
     <script>
-        // DOM Elements (tidak berubah)
+        // DOM Elements
         const textInput = document.getElementById('text-input');
         const previewBtn = document.getElementById('preview-btn');
         const downloadWavBtn = document.getElementById('download-wav-btn');
@@ -110,8 +145,8 @@
 
         let wavBlob = null;
         let mp3Blob = null;
-        
-        // --- Bagian JavaScript lainnya tidak berubah sampai ke fungsi handlePreview ---
+
+        // --- All other functions like saveSettings, loadSettings, handleDownload, etc. are unchanged ---
         const SETTINGS_KEY = 'ttsIndonesiaSettings_v5';
         function saveSettings() { const settings = { voice: voiceSelect.value, accent: accentSelect.value, style: styleSelect.value, age: ageSelect.value, speed: speedSlider.value }; localStorage.setItem(SETTINGS_KEY, JSON.stringify(settings)); }
         function loadSettings() { const savedSettings = localStorage.getItem(SETTINGS_KEY); if (savedSettings) { const settings = JSON.parse(savedSettings); voiceSelect.value = settings.voice || 'Kore'; accentSelect.value = settings.accent || 'standar'; styleSelect.value = settings.style || 'normal'; ageSelect.value = settings.age || 'default'; speedSlider.value = settings.speed || '1.0'; speedValue.textContent = `${parseFloat(speedSlider.value).toFixed(1)}x`; } }
@@ -127,89 +162,42 @@
         speedDownBtn.addEventListener('click', () => adjustSpeed(-0.2));
         speedUpBtn.addEventListener('click', () => adjustSpeed(0.2));
         function adjustSpeed(amount) { let currentSpeed = parseFloat(speedSlider.value); let newSpeed = currentSpeed + amount; const clampedSpeed = Math.max(0.5, Math.min(2.0, newSpeed)); speedSlider.value = clampedSpeed; speedValue.textContent = `${clampedSpeed.toFixed(1)}x`; saveSettings(); }
-        
-        // <!-- PERUBAHAN DIMULAI DI SINI -->
-
-        async function handlePreview() {
-            const text = textInput.value.trim();
-            if (!text) {
-                updateStatus('Teks tidak boleh kosong.', 'error');
-                return;
-            }
-
-            // Langsung nonaktifkan tombol saat proses dimulai
-            previewBtn.disabled = true; 
-            previewBtn.querySelector('span').textContent = 'Memproses...';
-            setLoadingState(true);
-            resetDownloadButtons();
-            wavBlob = mp3Blob = null;
-
-            try {
-                const voice = voiceSelect.value;
-                const accent = accentSelect.value;
-                const style = styleSelect.value;
-                const age = ageSelect.value;
-                const speed = parseFloat(speedSlider.value);
-                let instructions = [];
-                if (accent !== 'standar') instructions.push(`dengan logat ${accent}`);
-                if (style !== 'normal') instructions.push(style);
-                if (age !== 'default') instructions.push(`terdengar seperti berusia sekitar ${age} tahun`);
-                const promptText = instructions.length > 0 ? `Ucapkan ${instructions.join(' dan ')} dalam Bahasa Indonesia: ${text}` : text;
-                
-                const audioData = await generateSpeech(promptText, voice);
-                const originalSampleRate = 24000;
-                const pcmData = base64ToArrayBuffer(audioData);
-                const pcm16 = new Int16Array(pcmData);
-                const newSampleRate = Math.round(originalSampleRate * speed);
-                updateStatus('Mengonversi audio...', 'info');
-                const [wavResult, mp3Result] = await Promise.all([ pcmToWav(pcm16, newSampleRate), pcmToMp3(pcm16, newSampleRate) ]);
-                wavBlob = wavResult;
-                mp3Blob = mp3Result;
-                const audioUrl = URL.createObjectURL(wavBlob);
-                audioPlayer.src = audioUrl;
-                audioPlayer.playbackRate = 1.0;
-                audioPlayer.play();
-                updateStatus('Pratinjau sedang diputar...', 'success');
-                enableDownloadButtons();
-            } catch (error) {
-                console.error('Speech generation or conversion failed:', error);
-                updateStatus(`Gagal: ${error.message}. Coba lagi nanti.`, 'error');
-            } finally {
-                // Sembunyikan loader
-                setLoadingState(false);
-                
-                // Beri tahu pengguna untuk menunggu sebelum mengaktifkan tombol kembali
-                previewBtn.querySelector('span').textContent = 'Tunggu...';
-                
-                setTimeout(() => {
-                    previewBtn.disabled = false;
-                    previewBtn.querySelector('span').textContent = 'Pratinjau Suara';
-                }, 4000); // Tunggu 4 detik sebelum tombol bisa diklik lagi
-            }
-        }
-        
-        // Fungsi setLoadingState sekarang hanya fokus pada loader, bukan tombol
-        function setLoadingState(isLoading) {
-            if (isLoading) {
-                statusText.classList.add('hidden');
-                loader.classList.remove('hidden');
-            } else {
-                statusText.classList.remove('hidden');
-                loader.classList.add('hidden');
-            }
-        }
-
-        // <!-- AKHIR DARI PERUBAHAN -->
-
+        async function handlePreview() { const text = textInput.value.trim(); if (!text) { updateStatus('Teks tidak boleh kosong.', 'error'); return; } setLoadingState(true); resetDownloadButtons(); wavBlob = mp3Blob = null; try { const voice = voiceSelect.value; const accent = accentSelect.value; const style = styleSelect.value; const age = ageSelect.value; const speed = parseFloat(speedSlider.value); let instructions = []; if (accent !== 'standar') instructions.push(`dengan logat ${accent}`); if (style !== 'normal') instructions.push(style); if (age !== 'default') instructions.push(`terdengar seperti berusia sekitar ${age} tahun`); const promptText = instructions.length > 0 ? `Ucapkan ${instructions.join(' dan ')} dalam Bahasa Indonesia: ${text}` : text; console.log("Generated Prompt:", promptText); const audioData = await generateSpeech(promptText, voice); const originalSampleRate = 24000; const pcmData = base64ToArrayBuffer(audioData); const pcm16 = new Int16Array(pcmData); const newSampleRate = Math.round(originalSampleRate * speed); updateStatus('Mengonversi audio...', 'info'); const [wavResult, mp3Result] = await Promise.all([ pcmToWav(pcm16, newSampleRate), pcmToMp3(pcm16, newSampleRate) ]); wavBlob = wavResult; mp3Blob = mp3Result; const audioUrl = URL.createObjectURL(wavBlob); audioPlayer.src = audioUrl; audioPlayer.playbackRate = 1.0; audioPlayer.play(); updateStatus('Pratinjau sedang diputar...', 'success'); enableDownloadButtons(); } catch (error) { console.error('Speech generation or conversion failed:', error); updateStatus(`Gagal membuat suara. Cek konsol browser.`, 'error'); } finally { setLoadingState(false); } }
         function handleDownload(blob, filename) { if (!blob) { updateStatus('File audio belum siap.', 'error'); return; } const url = URL.createObjectURL(blob); const a = document.createElement('a'); a.style.display = 'none'; a.href = url; a.download = filename; document.body.appendChild(a); a.click(); window.URL.revokeObjectURL(url); document.body.removeChild(a); }
+        function setLoadingState(isLoading) { previewBtn.disabled = isLoading; if (isLoading) { statusText.classList.add('hidden'); loader.classList.remove('hidden'); } else { statusText.classList.remove('hidden'); loader.classList.add('hidden'); } }
         function resetDownloadButtons() { const buttons = [downloadWavBtn, downloadMp3Btn]; buttons.forEach(btn => { btn.disabled = true; btn.className = 'w-full flex items-center justify-center gap-2 bg-gray-600 hover:bg-gray-500 disabled:bg-gray-700 disabled:cursor-not-allowed text-white font-bold py-3 px-4 rounded-lg transition duration-200'; }); }
         function enableDownloadButtons() { downloadWavBtn.disabled = false; downloadWavBtn.classList.remove('bg-gray-600', 'hover:bg-gray-500', 'disabled:bg-gray-700'); downloadWavBtn.classList.add('bg-cyan-600', 'hover:bg-cyan-700'); downloadMp3Btn.disabled = false; downloadMp3Btn.classList.remove('bg-gray-600', 'hover:bg-gray-500', 'disabled:bg-gray-700'); downloadMp3Btn.classList.add('bg-green-600', 'hover:bg-green-700'); }
         function updateStatus(message, type = 'info') { statusText.textContent = message; statusText.classList.remove('text-gray-400', 'text-green-400', 'text-red-400'); const colorClass = { 'success': 'text-green-400', 'error': 'text-red-400', 'info': 'text-gray-400' }[type] || 'text-gray-400'; statusText.classList.add(colorClass); }
         function base64ToArrayBuffer(base64) { const binaryString = window.atob(base64); const len = binaryString.length; const bytes = new Uint8Array(len); for (let i = 0; i < len; i++) { bytes[i] = binaryString.charCodeAt(i); } return bytes.buffer; }
         function pcmToWav(pcmData, sampleRate) { return new Promise(resolve => { const numChannels = 1, bitsPerSample = 16; const dataSize = pcmData.length * 2; const buffer = new ArrayBuffer(44 + dataSize); const view = new DataView(buffer); const writeString = (view, offset, string) => { for (let i = 0; i < string.length; i++) { view.setUint8(offset + i, string.charCodeAt(i)); } }; writeString(view, 0, 'RIFF'); view.setUint32(4, 36 + dataSize, true); writeString(view, 8, 'WAVE'); writeString(view, 12, 'fmt '); view.setUint32(16, 16, true); view.setUint16(20, 1, true); view.setUint16(22, numChannels, true); view.setUint32(24, sampleRate, true); view.setUint32(28, sampleRate * numChannels * bitsPerSample / 8, true); view.setUint16(32, numChannels * bitsPerSample / 8, true); view.setUint16(34, bitsPerSample, true); writeString(view, 36, 'data'); view.setUint32(40, dataSize, true); for (let i = 0; i < pcmData.length; i++) { view.setInt16(44 + i * 2, pcmData[i], true); } resolve(new Blob([view], { type: 'audio/wav' })); }); }
         function pcmToMp3(pcmData, sampleRate) { return new Promise(resolve => { const mp3encoder = new lamejs.Mp3Encoder(1, sampleRate, 128); const samples = pcmData; const sampleBlockSize = 1152; const mp3Data = []; for (let i = 0; i < samples.length; i += sampleBlockSize) { const sampleChunk = samples.subarray(i, i + sampleBlockSize); const mp3buf = mp3encoder.encodeBuffer(sampleChunk); if (mp3buf.length > 0) mp3Data.push(mp3buf); } const mp3buf = mp3encoder.flush(); if (mp3buf.length > 0) mp3Data.push(mp3buf); resolve(new Blob(mp3Data, { type: 'audio/mpeg' })); }); }
-        async function generateSpeech(textToSpeak, voiceName) { const response = await fetch('/api/generate-speech', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ textToSpeak: textToSpeak, voiceName: voiceName }) }); if (!response.ok) { const errorData = await response.json(); console.error("Error from our serverless function:", errorData); throw new Error(`Server error: ${errorData.error || response.statusText}`); } const result = await response.json(); return result.audioData; }
+
+        /**
+         * Generates speech by calling our own serverless function backend.
+         * @param {string} textToSpeak - The text to convert to speech.
+         * @param {string} voiceName - The voice model to use.
+         * @returns {Promise<string>} - A promise that resolves with the base64 encoded audio data.
+         */
+        async function generateSpeech(textToSpeak, voiceName) {
+            // Call our backend, not Google directly
+            const response = await fetch('/api/generate-speech', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    textToSpeak: textToSpeak,
+                    voiceName: voiceName
+                })
+            });
+
+            if (!response.ok) {
+                const errorData = await response.json();
+                console.error("Error from our serverless function:", errorData);
+                throw new Error(`Server error: ${errorData.error || response.statusText}`);
+            }
+
+            const result = await response.json();
+            return result.audioData; // Return the audio data from our backend
+        }
     </script>
 </body>
 </html>
-
